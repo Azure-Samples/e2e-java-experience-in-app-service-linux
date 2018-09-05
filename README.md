@@ -568,6 +568,89 @@ When you are finished, you can check your results
 against YOUR code in 
 [e2e-java-experience-in-app-service-linux/complete](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux/tree/master/complete).
 
+## Build and Deploy Pet Clinic from Azure CloudShell
+
+We will now demonstrate how to deploy our application using the CloudShell in the Azure Portal. Open a browser and navigate to https://ms.portal.azure.com/.
+
+#### Set up CloudShell and clone repository
+
+To open the CloudShell, click the terminal prompt button in the top right hand corner of the portal.
+
+![](./media/console_button.PNG)
+
+If this is your firs time using CloudShell, you will be prompted to mount a storage volume. Select your subscription to create the volume under. For more information, [click here](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+
+Once the CloudShell is initialized, clone the repository just as we did earlier. We will clone it into the `/clouddrive` direcctory.
+
+```bash
+cd clouddrive
+git clone --recurse-submodules https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux.git && cd e2e-java-experience-in-app-service-linux
+cp -rf .prep/* .
+```
+
+#### Prepare for Deployment
+
+Much like before, copy the shell script into `.scripts/`.
+
+```bash
+cd initial-cloudshell/spring-framework-petclinic
+mkdir -p .scripts  && cp set-env-variables-template.sh .scripts/set-env-variables.sh
+```
+
+Using the nano editor, add your resource group and application name to the shell script. Note that to exit nano, press `ctrl+X` followed by `Y` and `Return`.
+
+```bash
+nano .scripts/set-env-variables.sh
+```
+
+Then source the script.
+
+```bash
+source .scripts/set-env-variable.sh
+```
+
+Finally, add the Azure Maven plugin XML to pom.xml.
+
+```xml
+<plugins> 
+    ...
+
+    <!--*************************************************-->
+    <!-- Deploy to Tomcat in App Service Linux           -->
+    <!--*************************************************-->
+       
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+    
+            <!-- Web App information -->
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appName>${WEBAPP_NAME}</appName>
+            <!-- Region and App Service Plan will be generated automatically. -->
+    
+            <!-- Java Runtime Stack for Web App on Linux-->
+            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
+    
+        </configuration>
+    </plugin>
+    ...
+
+</plugins>
+```
+
+#### Deploy to App Service
+
+Use the Azure Maven plugin to deploy from CloudShell.
+
+```bash
+mvn package azure-webapp:deploy
+```
+
+Open a tab on your browser and head to http://<your-app-name\>.azurewebsites.net.
+
+
 ## Scale out the Pet Clinic App
 
 Scale out Java Web app using Azure CLI:
