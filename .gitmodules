@@ -7,3 +7,7 @@
 [submodule "complete/spring-framework-petclinic"]
 	path = complete/spring-framework-petclinic
 	url = https://github.com/spring-petclinic/spring-framework-petclinic.git
+[submodule "initial-cloudshell/spring-framework-petclinic"]
+	path = initial-cloudshell/spring-framework-petclinic
+	url = https://github.com/spring-petclinic/spring-framework-petclinic.git
+	branch = fb1076b5c1a84bdea6027fec9dc1845362c0b9e9
