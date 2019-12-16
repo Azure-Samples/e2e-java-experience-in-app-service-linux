@@ -24,7 +24,8 @@ node {
 
   stage('deploy') {
     azureWebAppPublish azureCredentialsId: env.AZURE_CRED_ID,
-                       resourceGroup: env.RES_GROUP, appName: env.WEB_APP, filePath: "complete/spring-framework-petclinic/ROOT.war",
+                       resourceGroup: env.RES_GROUP, appName: env.WEB_APP,
+                       filePath: "complete/spring-framework-petclinic/ROOT.war",
                        targetDirectory: "webapps"
   }
 }

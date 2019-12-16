@@ -463,7 +463,7 @@
             <plugin>
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-webapp-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>1.8.0</version>
                 <configuration>
 
                     <!-- Web App information -->
@@ -473,7 +473,7 @@
                     <region>${REGION}</region>
 
                     <!-- Java Runtime Stack for Web App on Linux-->
-                    <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
+                    <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
 
                 </configuration>
             </plugin>

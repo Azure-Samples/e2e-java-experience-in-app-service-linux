@@ -202,7 +202,7 @@ Pet Clinic to Tomcat in App Service Linux:
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.4.0</version>
+        <version>1.8.0</version>
         <configuration>
     
             <!-- Web App information -->
@@ -212,7 +212,7 @@ Pet Clinic to Tomcat in App Service Linux:
             <region>${REGION}</region>
     
             <!-- Java Runtime Stack for Web App on Linux-->
-            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
+            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
     
         </configuration>
     </plugin>
@@ -234,7 +234,7 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building petclinic 5.0.8
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.4.0:deploy (default-cli) @ spring-petclinic ---
+[INFO] --- azure-webapp-maven-plugin:1.8.0:deploy (default-cli) @ spring-petclinic ---
 [INFO] Authenticate with Azure CLI 2.0
 [INFO] Target Web App doesn't exist. Creating a new one...
 [INFO] Creating App Service Plan 'petclinic-hsqldb-appservice-plan'...
@@ -402,7 +402,7 @@ POM.xml to bind secrets at runtime:
 <plugin>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-webapp-maven-plugin</artifactId>
-    <version>1.4.0</version>
+    <version>1.8.0</version>
     <configuration>
 
         <!-- Web App information -->
@@ -412,7 +412,7 @@ POM.xml to bind secrets at runtime:
         <region>${REGION}</region>
 
         <!-- Java Runtime Stack for Web App on Linux-->
-        <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
+        <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
 
         <appSettings>
             <property>
@@ -508,7 +508,7 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building petclinic 5.0.8
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.4.0:deploy (default-cli) @ spring-petclinic ---
+[INFO] --- azure-webapp-maven-plugin:1.8.0:deploy (default-cli) @ spring-petclinic ---
 [INFO] Authenticate with Azure CLI 2.0
 [INFO] Target Web App doesn't exist. Creating a new one...
 [INFO] Creating App Service Plan 'petclinic-mysql-appservice-plan'...
